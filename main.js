@@ -1,65 +1,52 @@
-const form = document.getElementById('form-atividade');
-const imgAprovado = '<img src="./images/aprovado.png" alt="Emoji celebrando"/>'; 
-const imgReprovado = '<img src="./images/reprovado.png" alt="Emoji decepcionado"/>';
-const atividades = [];
-const notas = [];
-const spanAprovado = '<span class="resultado aprovado">Aprovado</span>';
-const spanReprovado = '<span class="resultado reprovado">Reprovado</span>';
-const notaMinima = parseFloat(prompt("Digite a nota mínima"));
-
+const form = document.getElementById('form-contact');
+const contatos = [];
 let linhas = '';
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-
     adicionaLinha();
     atualizaTabela();
-    atualizaMediaFinal();
-
+    handleSubmit(e);
 });
+//Chamando as funções que serão executadas sempre que o submit for acionado//
 
-function adicionaLinha(){ 
-    const inputNomeAtividade = document.getElementById('nome-atividade');
-    const inputNotaAtividade = document.getElementById('nota-atividade');
+function adicionaLinha() {
+    const inputContact = document.getElementById('contact-add');
+    const inputNumber = document.getElementById('number-contact');
 
-    if(atividades.includes(inputNomeAtividade.value)) {
-        alert(`A Atividade: ${inputNomeAtividade.value} já foi inserida`);
+    if (contatos.includes(inputContact.value)) {
+        document.querySelector('.failure-message').style.display = 'block';
+
     } else {
-    atividades.push(inputNomeAtividade.value);
-    notas.push(parseFloat(inputNotaAtividade.value));
 
-    let linha = '<tr>';
-    linha +=  `<td> ${inputNomeAtividade.value}</td>`;
-    linha += `<td>${inputNotaAtividade.value}</td>`;
-    linha += `<td>${inputNotaAtividade.value >= notaMinima ? imgAprovado : imgReprovado}</td>`;
-    linha += `</tr>`;
+        contatos.push(inputContact.value);
 
-    linhas += linha;
+        let linha = '<tr>';
+        //indica que o campo receberá uma string//
+        linha += `<td> ${inputContact.value}</td>`
+        linha += `<td> ${inputNumber.value}</td>`
+        linha += `</tr>`;
+    
+        linhas += linha
     }
 
-    inputNomeAtividade.value = '';
-    inputNotaAtividade.value = '';
-    
+    inputContact.value = '';
+inputNumber.value = '';
+//Faz a função reset dos inputs//
 }
 
-function atualizaTabela() { 
+function atualizaTabela() {
     const corpoTabela = document.querySelector('tbody');
     corpoTabela.innerHTML = linhas;
 }
 
-function atualizaMediaFinal() {
-    const mediaFinal = calculaMediaFinal();
+function handleSubmit(e) {
+    //handleSubmit é a função que define o comportamento e o addEventListener associa uma função a determinado elemento//
+    e.preventDefault();
+    const failureMessage = document.querySelector('.failure-message');
 
-    document.getElementById('media-final-valor').innerHTML = mediaFinal.toFixed(2);
-    document.getElementById('media-final-resultado').innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
-}
-
-function calculaMediaFinal() {
-    let somaDasNotas = 0;
-
-    for (let i =0; i <notas.length; i++) {
-        somaDasNotas += notas[i];
-    }
-
-    return somaDasNotas / notas.length;
+    setTimeout(() => {
+        //setTimeout é o que define quanto tempo o meu aviso ficará na tela//
+        failureMessage.style.display = 'none';
+    }, 6000); //6000 é igual a 6 segundos//
 }

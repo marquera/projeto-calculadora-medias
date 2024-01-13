@@ -1,102 +1,97 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    background-color: #E7E7E7;
-    padding-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
+    margin-top: 24px;
+    margin-bottom: 24px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
-}
-
-header img {
-    height: 36px;
-    margin-right: 16px;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: bold;
+    font-family: 'Bungee Shade', sans-serif;
 }
 
-.container {
-    max-width: 960px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-form {
-    display: flex;
-    max-width: 640px;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 56px;
-
-
+header img {
+    height: 40px;
+    margin-left: 16px;
 }
 
 form input {
+    font-size: 14px;
+    display: inline-block;
+    align-items: center;
+    justify-content: space-around;
+    padding: 6px;
+    margin-bottom: 8px;
+}
 
-    font-size: 24px;
-    background-color: #fff;
-    border: none;
-    border-bottom: 2px solid #000;
+.failure-message {
+    background-color: #ff000f;
     padding: 8px;
-
-}
-form  button {
-    background-color: #009432;
-    color:#fff;
-    font-size: 24px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-}
-table {
-    width: 100%;
-
-}
-
-table th {
-    border-bottom: 2px solid #000;
-    padding:16px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-table td {
-    padding: 16px;
-    text-align: center;
-    font-size: 18px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-}
-
-table td img {
-    height: 30px;
-}
-
-.resultado {
-    padding:8px;
-    font-weight: bold;
     color: #fff;
-    background-color: #000;
-    border-radius: 3px;
+    text-align: center;
+    margin-top: 6px;
+    height: 50px;
+    width: 100%;
+    display: none;
+    resize: none;
 }
 
-.aprovado {
-    background-color: #009432;
+#contact-add {
+    width: 58%;
 }
 
-.reprovado {
-    background-color: red;
+#number-contact {
+    width: 40%;
 }
 
+button {
+    position: absolute;
+    /*position absolute para manter o button ao lado do formulário sem desregular a coluna*/
+    margin-left: 8px;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #ffffff;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+table {
+    border-collapse: collapse;
+    /*Para renderizar as bordas e não deixá-las espaçadas*/
+    width: 100%;
+    font-size: 14px;
+}
+
+th {
+    justify-content: space-between;
+    text-align: left;
+    padding: 8px;
+    width: 60%;
+    border-bottom: 2px solid #000;
+}
+
+td {
+    justify-content: space-between;
+    text-align: left;
+    padding: 8px;
+    width: 50%;
+    border-bottom: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
